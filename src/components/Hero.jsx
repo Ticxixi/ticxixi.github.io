@@ -1,11 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import CurvedLoop from './CurvedLoop'
 import TextPressure from './TextPressure'
 import LogoLoop from './LogoLoop'
+import AIAvatar from './AIAvatar'
 import './Hero.css'
 
 export default function Hero() {
   const sectionRef = useRef(null)
+  const contentRef = useRef(null)
+
+  // Mouse parallax on hero content
+  useEffect(() => {
+    const onMove = e => {
+      if (!contentRef.current) return
+      const x = (e.clientX - window.innerWidth / 2) / 60
+      const y = (e.clientY - window.innerHeight / 2) / 60
+      contentRef.current.style.transform = `translate(${x}px, ${y}px)`
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
@@ -14,7 +28,9 @@ export default function Hero() {
       </video>
       <div className="hero-overlay" />
 
-      <div className="hero-content">
+      <AIAvatar />
+
+      <div className="hero-content" ref={contentRef}>
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
 
         <p className="hero-label">个人创作者 · 数字游牧人 · AI 产品实践者</p>

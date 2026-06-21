@@ -1,0 +1,108 @@
+.ai-avatar {
+  position: absolute;
+  right: 60px;
+  bottom: 80px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.ai-orb {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(167,139,250,0.7), rgba(80,60,180,0.9));
+  box-shadow: 0 0 30px rgba(167,139,250,0.4), 0 0 60px rgba(167,139,250,0.15), inset 0 0 20px rgba(255,255,255,0.05);
+  animation: orbFloat 4s ease-in-out infinite;
+}
+
+.ai-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(167,139,250,0.3);
+  animation: ringPulse 3s ease-in-out infinite;
+}
+.ring-1 { animation-delay: 0s; }
+.ring-2 {
+  inset: -14px;
+  border-color: rgba(167,139,250,0.15);
+  animation-delay: 0.5s;
+  animation-duration: 3.5s;
+}
+.ring-3 {
+  inset: -22px;
+  border-color: rgba(167,139,250,0.08);
+  animation-delay: 1s;
+  animation-duration: 4s;
+}
+
+.ai-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-eye {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.ai-pupil {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0A0A0A;
+}
+
+.ai-label {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(167,139,250,0.6);
+  text-transform: uppercase;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@media (max-width: 768px) {
+  .ai-avatar {
+    right: 20px;
+    bottom: 60px;
+  }
+  .ai-orb {
+    width: 44px; height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-avatar {
+    right: 12px;
+    bottom: 50px;
+  }
+  .ai-orb {
+    width: 36px; height: 36px;
+  }
+  .ai-ring { display: none; }
+}
