@@ -9,6 +9,8 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
+      {/* Bright stars layer */}
+      <div className="hero-stars" />
 
       <div className="hero-content">
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
