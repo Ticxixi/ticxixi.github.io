@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="contact-glow" />
-      <div className="contact-inner">
+      <div className="contact-inner reveal">
         <p className="section-eyebrow">Get in Touch</p>
         <h2 className="contact-title">Let's build<br />something together</h2>
         <p className="contact-text">

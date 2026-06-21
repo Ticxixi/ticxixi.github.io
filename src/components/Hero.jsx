@@ -1,46 +1,97 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import CurvedLoop from './CurvedLoop'
+import TextPressure from './TextPressure'
+import GlitchText from './GlitchText'
+import LogoLoop from './LogoLoop'
+import './Hero.css'
 
 export default function Hero() {
+  const videoRef = useRef(null)
+  const sectionRef = useRef(null)
+
+  // Pause video when Hero is scrolled out of view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (videoRef.current) {
+          if (entry.isIntersecting) {
+            videoRef.current.play()
+          } else {
+            videoRef.current.pause()
+          }
+        }
+      },
+      { threshold: 0.1 }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="hero" className="hero">
-      {/* Video background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: 'absolute', inset: 0, zIndex: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover',
-        }}
-      >
+    <section id="hero" className="hero" ref={sectionRef}>
+      <video ref={videoRef} autoPlay loop muted playsInline className="hero-video">
         <source src="/bg-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay for text readability */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 0,
-        background: 'rgba(0,0,0,0.55)',
-      }} />
-
-      {/* Ambient glows */}
+      <div className="hero-overlay" />
       <div className="hero-glow-t" />
       <div className="hero-glow-b" />
 
       <div className="hero-content">
-        <p className="hero-eyebrow">AI Designer &amp; Digital Nomad</p>
-        <h1 className="hero-title">
-          Design meets<br /><span>Artificial Intelligence</span>
-        </h1>
-        <p className="hero-desc">
-          Building bridges between design thinking and AI technology.
-          Crafting next-gen digital experiences with code, creativity, and large models.
-        </p>
-        <div className="hero-btns">
-          <a href="#projects" className="btn-white">View Projects</a>
-          <a href="#contact" className="btn-outline">Contact Me</a>
+        <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
+
+        <p className="hero-label">个人创作者 · 数字游牧人 · AI 产品实践者</p>
+
+        <div className="hero-pressure-wrap">
+          <TextPressure
+            text="Ticxixi"
+            fontFamily="Roboto Flex"
+            fontUrl="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&display=swap"
+            flex={true}
+            alpha={false}
+            stroke={false}
+            width={true}
+            weight={true}
+            italic={true}
+            textColor="#ffffff"
+            minFontSize={42}
+          />
         </div>
+        <GlitchText speed={1} enableShadows={true} enableOnHover={true} className="hero-name-cn">
+          西瓜
+        </GlitchText>
+
+        <div className="hero-marquee">
+          <CurvedLoop
+            marqueeText="✦ Ticxixi ✦ AI Designer ✦ Digital Nomad ✦ Content Creator ✦"
+            speed={1.5}
+            curveAmount={200}
+            direction="left"
+            interactive={true}
+          />
+        </div>
+
+        <div className="hero-loop">
+          <LogoLoop
+            logos={[
+              { node: '✦ AI 内容创作' },
+              { node: '✦ 数字游牧人' },
+              { node: '✦ Entp' },
+              { node: '✦ 天秤座' },
+              { node: '✦ 乐观主义者' },
+              { node: '✦ 大模型实践' },
+              { node: '✦ 中英双语' },
+            ]}
+            speed={60}
+            direction="left"
+            logoHeight={20}
+            gap={40}
+            hoverSpeed={0}
+            fadeOut={true}
+            fadeOutColor="#0A0A0A"
+          />
+        </div>
+
       </div>
 
       <div className="hero-scroll">

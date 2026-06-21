@@ -1,14 +1,14 @@
 :root {
-  --bg-primary: #080808;
-  --bg-secondary: #0f0f0f;
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
   --bg-card: #141414;
   --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(255,255,255,0.12);
+  --border-hover: rgba(167,139,250,0.3);
   --text: #e8e8e8;
   --text-secondary: #999;
   --text-muted: #666;
-  --accent: #6c5ce7;
-  --accent-glow: rgba(108,92,231,0.3);
+  --accent: #A78BFA;
+  --accent-glow: rgba(167,139,250,0.25);
   --font-display: 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --max-width: 1200px;
@@ -41,6 +41,25 @@ body {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 0.40s; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {

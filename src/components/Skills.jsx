@@ -16,7 +16,7 @@ export default function Skills() {
       <h2 className="section-title">What I Bring</h2>
       <div className="skills-grid">
         {ITEMS.map((s, i) => (
-          <div key={i} className="skill-card">
+          <div key={i} className="skill-card reveal">
             <div className="skill-icon">{s.icon}</div>
             <h3 className="skill-title">{s.title}</h3>
             <p className="skill-desc">{s.desc}</p>
