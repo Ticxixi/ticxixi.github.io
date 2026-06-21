@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import CurvedLoop from './CurvedLoop'
 import TextPressure from './TextPressure'
 import LogoLoop from './LogoLoop'
-import Ferrofluid from './Ferrofluid'
 import './Hero.css'
 
 export default function Hero() {
@@ -10,27 +9,8 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
-      {/* Ferrofluid background */}
-      <div className="hero-ferrofluid">
-        <Ferrofluid
-          colors={['#A78BFA', '#2D1B69', '#0A0A0A']}
-          speed={0.4}
-          scale={1.8}
-          turbulence={1.2}
-          fluidity={0.08}
-          rimWidth={0.25}
-          sharpness={2.5}
-          shimmer={1.5}
-          glow={1.8}
-          flowDirection="down"
-          opacity={0.7}
-          mouseInteraction={true}
-          mouseStrength={1}
-          mouseRadius={0.3}
-        />
-      </div>
-
-      <div className="hero-overlay" />
+      <div className="hero-glow-t" />
+      <div className="hero-glow-b" />
 
       <div className="hero-content">
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
