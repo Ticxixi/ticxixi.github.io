@@ -1,53 +1,35 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
 export default function Hero() {
-  const canvasRef = useRef(null)
-
-  useEffect(() => {
-    const c = canvasRef.current
-    const ctx = c.getContext('2d')
-    let anim
-    const resize = () => { c.width = window.innerWidth; c.height = window.innerHeight }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const pts = Array.from({ length: 80 }, () => ({
-      x: Math.random() * c.width, y: Math.random() * c.height,
-      vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.5 + 0.5,
-    }))
-
-    function draw() {
-      ctx.clearRect(0, 0, c.width, c.height)
-      pts.forEach((p, i) => {
-        p.x += p.vx; p.y += p.vy
-        if (p.x < 0 || p.x > c.width) p.vx *= -1
-        if (p.y < 0 || p.y > c.height) p.vy *= -1
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(108,92,231,0.5)'; ctx.fill()
-        pts.slice(i + 1).forEach(q => {
-          const d = Math.hypot(p.x - q.x, p.y - q.y)
-          if (d < 140) {
-            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y)
-            ctx.strokeStyle = `rgba(108,92,231,${0.08 * (1 - d / 140)})`
-            ctx.lineWidth = 0.5; ctx.stroke()
-          }
-        })
-      })
-      anim = requestAnimationFrame(draw)
-    }
-    draw()
-    return () => { cancelAnimationFrame(anim); window.removeEventListener('resize', resize) }
-  }, [])
-
   return (
     <section id="hero" className="hero">
-      <canvas ref={canvasRef} className="hero-canvas" />
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+        }}
+      >
+        <source src="/bg-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for text readability */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        background: 'rgba(0,0,0,0.55)',
+      }} />
+
+      {/* Ambient glows */}
       <div className="hero-glow-t" />
       <div className="hero-glow-b" />
 
       <div className="hero-content">
-        <p className="hero-eyebrow">AI Designer &amp; Developer</p>
+        <p className="hero-eyebrow">AI Designer &amp; Digital Nomad</p>
         <h1 className="hero-title">
           Design meets<br /><span>Artificial Intelligence</span>
         </h1>
