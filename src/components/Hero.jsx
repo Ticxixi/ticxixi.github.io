@@ -9,8 +9,10 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
-      {/* Bright stars layer */}
-      <div className="hero-stars" />
+      <video autoPlay loop muted playsInline className="hero-video">
+        <source src="/bg-video.mp4" type="video/mp4" />
+      </video>
+      <div className="hero-overlay" />
 
       <div className="hero-content">
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
