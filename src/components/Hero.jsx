@@ -33,7 +33,7 @@ export default function Hero() {
       <div className="hero-content" ref={contentRef}>
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
 
-        <p className="hero-label">个人创作者 · 数字游牧人 · AI 产品实践者</p>
+        <p className="hero-label">生命以负熵为生</p>
 
         <div className="hero-pressure-wrap">
           <TextPressure
@@ -65,12 +65,12 @@ export default function Hero() {
           <LogoLoop
             logos={[
               { node: '✦ AI 内容创作' },
-              { node: '✦ 数字游牧人' },
+              { node: '✦ 数字游民' },
               { node: '✦ Entp' },
               { node: '✦ 天秤座' },
               { node: '✦ 乐观主义者' },
               { node: '✦ 大模型实践' },
-              { node: '✦ 中英双语' },
+              { node: '✦ 自媒体创作' },
             ]}
             speed={60}
             direction="left"

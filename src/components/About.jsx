@@ -4,13 +4,6 @@ import RotatingText from './RotatingText'
 import SplitText from './SplitText'
 import MagicBento from './MagicBento'
 
-const STATS = [
-  { value: '10K+', label: 'Followers' },
-  { value: '300K+', label: 'Content Views' },
-  { value: '3+', label: 'Projects' },
-  { value: '2', label: 'Internships' },
-]
-
 export default function About() {
   return (
     <section id="about" className="about">
