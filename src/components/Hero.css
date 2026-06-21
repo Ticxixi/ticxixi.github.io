@@ -9,12 +9,45 @@
   background: #0A0A0A;
 }
 
-/* Overlay for Hyperspeed readability */
-.hero-overlay {
+/* Animated aurora background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(167,139,250,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(100,116,255,0.06) 0%, transparent 50%);
+  animation: aurora 15s ease-in-out infinite alternate;
+}
+
+@keyframes aurora {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(3%, 2%) rotate(2deg); }
+  66% { transform: translate(-2%, -1%) rotate(-1deg); }
+  100% { transform: translate(1%, -2%) rotate(1deg); }
+}
+
+/* Floating particles */
+.hero::after {
+  content: '';
   position: absolute;
   inset: 0;
-  z-index: 1;
-  background: rgba(10, 10, 10, 0.2);
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(167,139,250,0.4), transparent),
+    radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 40% 55%, rgba(167,139,250,0.3), transparent),
+    radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 70% 65%, rgba(167,139,250,0.35), transparent),
+    radial-gradient(1px 1px at 85% 45%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 15% 75%, rgba(124,58,237,0.3), transparent),
+    radial-gradient(1px 1px at 60% 85%, rgba(167,139,250,0.25), transparent),
+    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(2px 2px at 35% 70%, rgba(167,139,250,0.2), transparent),
+    radial-gradient(2px 2px at 75% 30%, rgba(124,58,237,0.2), transparent),
+    radial-gradient(2px 2px at 50% 50%, rgba(255,255,255,0.15), transparent);
   pointer-events: none;
 }
 

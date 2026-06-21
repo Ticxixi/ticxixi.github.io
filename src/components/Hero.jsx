@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import CurvedLoop from './CurvedLoop'
 import TextPressure from './TextPressure'
 import LogoLoop from './LogoLoop'
-import Hyperspeed from './Hyperspeed'
 import './Hero.css'
 
 export default function Hero() {
@@ -10,9 +9,6 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
-      <Hyperspeed />
-
-      <div className="hero-overlay" />
 
       <div className="hero-content">
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
