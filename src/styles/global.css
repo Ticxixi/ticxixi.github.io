@@ -1,0 +1,67 @@
+:root {
+  --bg-primary: #080808;
+  --bg-secondary: #0f0f0f;
+  --bg-card: #141414;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --text: #e8e8e8;
+  --text-secondary: #999;
+  --text-muted: #666;
+  --accent: #6c5ce7;
+  --accent-glow: rgba(108,92,231,0.3);
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --max-width: 1200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+/* Animation for orbital ring */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  :root {
+    --max-width: 100%;
+  }
+
+  nav { padding: 0 16px !important; }
+  nav div[style*="gap: 28px"] { gap: 14px !important; }
+  nav a[href="#hero"] { font-size: 0.95rem !important; }
+  nav a[style*="padding: 7px 18px"] { display: none; }
+
+  section { padding: 80px 16px !important; }
+}
+
+@media (max-width: 480px) {
+  nav div[style*="gap: 28px"] {
+    gap: 10px !important;
+  }
+  nav a[style*="font-size: 0.85rem"] {
+    fontSize: '0.72rem';
+  }
+}
+
