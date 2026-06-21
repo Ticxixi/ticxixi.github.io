@@ -2,7 +2,6 @@
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,17 +27,23 @@
 
 .hero-glow-t {
   position: absolute;
-  top: -30%; left: -20%;
-  width: 60%; height: 80%;
+  top: -30%;
+  left: -20%;
+  width: 60%;
+  height: 80%;
   background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 .hero-glow-b {
   position: absolute;
-  bottom: -20%; right: -10%;
-  width: 50%; height: 60%;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 60%;
   background: radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ---------- Content ---------- */
@@ -46,171 +51,192 @@
   position: relative;
   z-index: 1;
   max-width: 680px;
-  width: 100%;
-  padding: 0 20px;
+  padding: 0 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Avatar */
+/* Avatar image */
 .hero-avatar {
-  width: 80px; height: 80px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgba(255,255,255,0.12);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   filter: grayscale(20%);
-  transition: all 0.5s ease;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1.2);
 }
 .hero-avatar:hover {
   border-color: #A78BFA;
   filter: grayscale(0%);
-  box-shadow: 0 0 32px rgba(167,139,250,0.15);
+  box-shadow: 0 0 32px rgba(230, 57, 124, 0.15);
   transform: scale(1.04);
 }
 
-/* Label */
+/* Label above name */
 .hero-label {
   font-size: 0.72rem;
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 16px;
   font-weight: 400;
 }
 
-/* TextPressure */
+/* ---------- TextPressure Name ---------- */
 .hero-pressure-wrap {
   position: relative;
   width: 100%;
   max-width: 600px;
   height: 100px;
   margin-bottom: 4px;
-  overflow: hidden;
 }
 
-/* GlitchText CN */
 .hero-name-cn {
   font-family: 'Noto Serif SC', serif;
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   font-weight: 600;
-  letter-spacing: 4px;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 16px;
+  letter-spacing: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
   display: block;
   text-align: center;
 }
 
-/* CurvedLoop */
+@media (max-width: 768px) {
+  .hero-pressure-wrap {
+    height: 72px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-pressure-wrap {
+    height: 56px;
+  }
+  .hero-name-cn {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+  }
+}
+
+/* ---------- Curved Marquee ---------- */
 .hero-marquee {
   width: 100%;
   max-width: 600px;
-  margin-bottom: 16px;
-  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-/* LogoLoop */
+/* ---------- Logo Loop ---------- */
 .hero-loop {
   width: 100%;
   max-width: 500px;
-  margin-bottom: 20px;
-  overflow: hidden;
+  margin-bottom: 24px;
 }
 
-/* Scroll */
+/* ---------- Buttons ---------- */
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary {
+  padding: 12px 32px;
+  border-radius: 6px;
+  background: #A78BFA;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 2px solid #A78BFA;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: #8b6fe8;
+  border-color: #8b6fe8;
+  box-shadow: 0 0 24px rgba(167,139,250,0.25);
+}
+
+.btn-outline {
+  padding: 12px 32px;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: #A78BFA;
+  box-shadow: 0 0 16px rgba(230, 57, 124, 0.15);
+  background: rgba(230, 57, 124, 0.06);
+}
+
+/* ---------- Scroll indicator ---------- */
 .hero-scroll {
   position: absolute;
-  bottom: 28px; left: 50%;
+  bottom: 36px;
+  left: 50%;
   transform: translateX(-50%);
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   opacity: 0.4;
 }
 .hero-scroll span {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 3px;
   color: rgba(255,255,255,0.4);
 }
 .hero-scroll-line {
-  width: 1px; height: 24px;
+  width: 1px;
+  height: 28px;
   background: linear-gradient(rgba(255,255,255,0.4), transparent);
 }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-  .hero-content {
-    padding: 0 16px;
-    max-width: 100%;
+  .hero-name-en {
+    font-size: clamp(2rem, 7vw, 3rem);
   }
-
+  .hero-name-cn {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    letter-spacing: 4px;
+  }
   .hero-avatar {
-    width: 64px; height: 64px;
-    margin-bottom: 18px;
-  }
-
-  .hero-label {
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-  }
-
-  .hero-pressure-wrap {
+    width: 72px;
     height: 72px;
-    max-width: 100%;
-  }
-
-  .hero-marquee {
-    max-width: 100%;
-  }
-
-  .hero-loop {
-    max-width: 100%;
-  }
-
-  .hero-scroll {
-    bottom: 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-content {
-    padding: 0 12px;
+  .hero-name-en {
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
   }
-
-  .hero-avatar {
-    width: 56px; height: 56px;
-    margin-bottom: 14px;
+  .hero-name-cn {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
   }
-
   .hero-label {
-    font-size: 0.6rem;
+    font-size: 0.68rem;
     letter-spacing: 2px;
   }
-
-  .hero-pressure-wrap {
-    height: 52px;
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
   }
-
-  .hero-name-cn {
-    font-size: 1.1rem;
-    letter-spacing: 3px;
-    margin-bottom: 12px;
-  }
-
-  .hero-marquee {
-    margin-bottom: 12px;
-  }
-
-  .hero-loop {
-    margin-bottom: 14px;
-  }
-
-  .hero-scroll {
-    bottom: 10px;
+  .btn-primary, .btn-outline {
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
   }
 }

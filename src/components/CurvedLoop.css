@@ -12,7 +12,7 @@
   aspect-ratio: 100 / 12;
   overflow: visible;
   display: block;
-  font-size: clamp(1.2rem, 3vw, 3rem);
+  font-size: 3rem;
   fill: rgba(167,139,250,0.35);
   user-select: none;
   -moz-user-select: none;

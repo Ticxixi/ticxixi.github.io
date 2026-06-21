@@ -24,11 +24,10 @@
   flex: 0 0 auto;
   margin-right: var(--logoloop-gap);
   color: rgba(255,255,255,0.6);
-  font-size: clamp(10px, 1.5vw, 14px);
+  font-size: 14px;
   font-weight: 500;
   transition: color 0.2s;
   cursor: default;
-  white-space: nowrap;
 }
 
 .logoloop__item:hover {
