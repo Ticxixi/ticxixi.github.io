@@ -1,41 +1,36 @@
 import React, { useRef, useEffect } from 'react'
 import CurvedLoop from './CurvedLoop'
 import TextPressure from './TextPressure'
-import GlitchText from './GlitchText'
 import LogoLoop from './LogoLoop'
+import Ferrofluid from './Ferrofluid'
 import './Hero.css'
 
 export default function Hero() {
-  const videoRef = useRef(null)
   const sectionRef = useRef(null)
-
-  // Pause video when Hero is scrolled out of view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (videoRef.current) {
-          if (entry.isIntersecting) {
-            videoRef.current.play()
-          } else {
-            videoRef.current.pause()
-          }
-        }
-      },
-      { threshold: 0.1 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
-      <video ref={videoRef} autoPlay loop muted playsInline className="hero-video">
-        <source src="/bg-video.mp4" type="video/mp4" />
-      </video>
+      {/* Ferrofluid background */}
+      <div className="hero-ferrofluid">
+        <Ferrofluid
+          colors={['#A78BFA', '#2D1B69', '#0A0A0A']}
+          speed={0.4}
+          scale={1.8}
+          turbulence={1.2}
+          fluidity={0.08}
+          rimWidth={0.25}
+          sharpness={2.5}
+          shimmer={1.5}
+          glow={1.8}
+          flowDirection="down"
+          opacity={0.7}
+          mouseInteraction={true}
+          mouseStrength={1}
+          mouseRadius={0.3}
+        />
+      </div>
 
       <div className="hero-overlay" />
-      <div className="hero-glow-t" />
-      <div className="hero-glow-b" />
 
       <div className="hero-content">
         <img src="/avatar.jpg" alt="Ticxixi" className="hero-avatar" />
@@ -57,9 +52,7 @@ export default function Hero() {
             minFontSize={42}
           />
         </div>
-        <GlitchText speed={1} enableShadows={true} enableOnHover={true} className="hero-name-cn">
-          西瓜
-        </GlitchText>
+        <span className="hero-name-cn">西瓜</span>
 
         <div className="hero-marquee">
           <CurvedLoop
@@ -91,7 +84,6 @@ export default function Hero() {
             fadeOutColor="#0A0A0A"
           />
         </div>
-
       </div>
 
       <div className="hero-scroll">
